@@ -1,0 +1,42 @@
+import pandas as pd
+import plotly.express as px
+
+# Charger le fichier CSV
+chemin_fichier = r'C:\Users\omari\Desktop\Work\DATASC\MapRepartaition des bornes\consolidation-etalab-schema-irve-statique-v-2.3.1-20241123.csv'
+df = pd.read_csv(chemin_fichier)
+
+# Convertir la colonne 'date_mise_en_service' en datetime
+df['date_mise_en_service'] = pd.to_datetime(df['date_mise_en_service'], errors='coerce')
+
+# Extraire l'année de la colonne 'date_mise_en_service'
+df['année'] = df['date_mise_en_service'].dt.year.astype('Int64')
+
+# Extraire les deux premiers chiffres du numéro de département
+df['département'] = df['code_insee_commune'].astype(str).str[:2]
+
+# Supprimer les lignes où le département est 'NA' ou non valide
+df = df.dropna(subset=['département'])
+df = df[df['département'].str.isnumeric()]
+
+# Convertir la colonne 'département' en entier et filtrer les départements supérieurs à 97
+df['département'] = df['département'].astype(int)
+df = df[df['département'] <= 97]
+
+# Grouper par année et par département
+données_groupées = df.groupby(['année', 'département']).size().reset_index(name='nombre')
+
+# Filtrer pour les années d'intérêt
+années_d_interet = [2020, 2021, 2022, 2023, 2024]
+données_groupées = données_groupées[données_groupées['année'].isin(années_d_interet)]
+
+# Créer le graphique interactif
+fig = px.bar(données_groupées, x='département', y='nombre', color='année', 
+             title='Nombre de bornes de recharge par département et par année',
+             labels={'département': 'Département', 'nombre': 'Nombre de bornes de recharge', 'année': 'Année'},
+             barmode='group')
+
+# Enregistrer le graphique en tant que fichier HTML
+fig.write_html('histogramme_interactif_par_département_et_année.html')
+
+# Afficher un message pour indiquer que le script est terminé
+print("L'histogramme interactif par département et année a été enregistré sous 'histogramme_interactif_par_département_et_année.html'")
