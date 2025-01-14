@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site DS Interractif</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="StyleDuSite.css" rel="stylesheet">
+
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #0078d4;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .map-container {
+      margin-top: 20px;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: 500px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+    }
+
+    .description {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-left: 4px solid #0078d4;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Application de Visualisation de Données</h1>
+    <p>Évaluation de l'avancement et de l'efficacité des politiques publiques pour la transition énergétique</p>
+  </header>
+
+  <main class="container">
+    <div class="row">
+      <div class="col-12 map-container"></div>
+      <h2>Carte 1 : Adoption des VE</h2>
+      <iframe src="./../MapVoitureElecparVille/carte_thermique_voitures_par_departement.html"></iframe>
+      <div class="description">
+        <p>Description de la carte 1 : Cette carte montre l'adoption des véhicules électriques par département.</p>
+      </div>
+    </div>
+    <div class="col-12 map-container"></div>
+    <h2>Carte 2 : Revenu Médian</h2>
+    <iframe src="./../MapRepartitionDesRevenu/carte_thermique_revenus.html"></iframe>
+    <div class="description">
+      <p>Description de la carte 2 : Cette carte montre la répartition des revenus médians par région.</p>
+    </div>
+    </div>
+    <div class="col-12 map-container">
+      <h2>Carte 3 : Points de Recharge</h2>
+      <iframe src="./../MapRepartaition des bornes/map_with_legend.html"></iframe>
+      <div class="description">
+        <p>Description de la carte 3 : Cette carte montre la répartition des points de recharge pour véhicules
+          électriques.</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="col-12 map-container">
+      <h2>L'évolution du nombre de bornes de recharge selon les départements français</h2>
+      <iframe src="./histogramme_interactif_par_département_et_année.html"></iframe>
+      <div class="description">
+        <p>Description de l'histogramme : Cet histogramme montre l'évolution du nombre de bornes de recharge selon les
+          départements français.</p>
+      </div>
+    </div>
+
+    <div class="col-12 map-container">
+      <h2>L'évolution du nombre de véhicules électriques selon les départements français</h2>
+      <iframe src="./histogramNmbrDeVoitParDep.html"></iframe>
+      <div class="description">
+        <p>Description de l'histogramme : Cet histogramme montre l'évolution du nombre de véhicules électriques selon les départements français.</p>
+      </div>
+    </div>
+
+    <div class="col-12 map-container">
+      <h2>L'évolution du nombre de véhicules électriques par habitant</h2>
+      <iframe src="./graphe_ve_par_habitant.html"></iframe>
+      <div class="description">
+        <p>Description du graphique : Ce graphique montre l'évolution du nombre de véhicules électriques par habitant.</p>
+      </div>
+    </div>
+
+    <div class="col-12 map-container">
+      <h2>CO2 évité par habitant</h2>
+      <iframe src="./graphe_co2_evite_par_habitant.html"></iframe>
+      <div class="description">
+        <p>Description du graphique : Ce graphique montre le CO2 évité par habitant grâce à l'utilisation de véhicules électriques.</p>
+      </div>
+    </div>
+
+    <div class="col-12 map-container">
+      <h2>Émissions évitées</h2>
+      <iframe src="./emissions_evitees.html"></iframe>
+      <div class="description">
+        <p>Description du graphique : Ce graphique montre les émissions évitées grâce à l'utilisation de véhicules électriques.</p>
+      </div>
+    </div>
+
+    <div class="col-12 map-container">
+      <h2>Clustering des départements</h2>
+      <iframe src="./clustering_departements.html"></iframe>
+      <div class="description">
+        <p>Description du graphique : Ce graphique montre le clustering des départements en fonction de divers critères liés aux véhicules électriques.</p>
+      </div>
+    </div>
+
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 - Project de Omar EL BAF et de Imane CHADLI</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="appPlotly.js"></script>
+
+</body>
+
+</html>
